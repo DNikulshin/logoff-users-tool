@@ -16,6 +16,7 @@ namespace LogoffUsersTool.UI
         private void InitializeComponent()
         {
             this.inputGroupBox = new System.Windows.Forms.GroupBox();
+            this.defaultSettingsButton = new System.Windows.Forms.Button();
             this.serverLabel = new System.Windows.Forms.Label();
             this.serverTextBox = new System.Windows.Forms.TextBox();
             this.timerLabel = new System.Windows.Forms.Label();
@@ -28,10 +29,9 @@ namespace LogoffUsersTool.UI
             this.outputRichTextBox = new System.Windows.Forms.RichTextBox();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.copyrightStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.defaultSettingsButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
-            this.copyrightLabel = new System.Windows.Forms.Label();
             this.inputGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.timerNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intervalNumericUpDown)).BeginInit();
@@ -40,6 +40,8 @@ namespace LogoffUsersTool.UI
             // 
             // inputGroupBox
             // 
+            this.inputGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.inputGroupBox.Controls.Add(this.defaultSettingsButton);
             this.inputGroupBox.Controls.Add(this.serverLabel);
             this.inputGroupBox.Controls.Add(this.serverTextBox);
@@ -54,6 +56,17 @@ namespace LogoffUsersTool.UI
             this.inputGroupBox.TabStop = false;
             this.inputGroupBox.Text = "Параметры";
             // 
+            // defaultSettingsButton
+            // 
+            this.defaultSettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.defaultSettingsButton.Location = new System.Drawing.Point(284, 112);
+            this.defaultSettingsButton.Name = "defaultSettingsButton";
+            this.defaultSettingsButton.Size = new System.Drawing.Size(170, 30);
+            this.defaultSettingsButton.TabIndex = 6;
+            this.defaultSettingsButton.Text = "По умолчанию";
+            this.defaultSettingsButton.UseVisualStyleBackColor = true;
+            this.defaultSettingsButton.Click += new System.EventHandler(this.defaultSettingsButton_Click);
+            // 
             // serverLabel
             // 
             this.serverLabel.AutoSize = true;
@@ -65,9 +78,11 @@ namespace LogoffUsersTool.UI
             // 
             // serverTextBox
             // 
+            this.serverTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.serverTextBox.Location = new System.Drawing.Point(180, 22);
             this.serverTextBox.Name = "serverTextBox";
-            this.serverTextBox.Size = new System.Drawing.Size(270, 23);
+            this.serverTextBox.Size = new System.Drawing.Size(274, 23);
             this.serverTextBox.TabIndex = 1;
             // 
             // timerLabel
@@ -108,16 +123,6 @@ namespace LogoffUsersTool.UI
             this.intervalNumericUpDown.TabIndex = 5;
             this.intervalNumericUpDown.Value = new decimal(new int[] { 60, 0, 0, 0 });
             // 
-            // defaultSettingsButton
-            // 
-            this.defaultSettingsButton.Location = new System.Drawing.Point(280, 115);
-            this.defaultSettingsButton.Name = "defaultSettingsButton";
-            this.defaultSettingsButton.Size = new System.Drawing.Size(170, 30);
-            this.defaultSettingsButton.TabIndex = 6;
-            this.defaultSettingsButton.Text = "По умолчанию";
-            this.defaultSettingsButton.UseVisualStyleBackColor = true;
-            this.defaultSettingsButton.Click += new System.EventHandler(this.defaultSettingsButton_Click);
-            // 
             // startButton
             // 
             this.startButton.Location = new System.Drawing.Point(12, 168);
@@ -139,18 +144,9 @@ namespace LogoffUsersTool.UI
             this.stopButton.UseVisualStyleBackColor = true;
             this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
             // 
-            // settingsButton
-            // 
-            this.settingsButton.Location = new System.Drawing.Point(266, 168);
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(100, 30);
-            this.settingsButton.TabIndex = 7;
-            this.settingsButton.Text = "Настройки";
-            this.settingsButton.UseVisualStyleBackColor = true;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
-            // 
             // clearButton
             // 
+            this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.clearButton.Location = new System.Drawing.Point(372, 168);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(100, 30);
@@ -161,18 +157,22 @@ namespace LogoffUsersTool.UI
             // 
             // outputRichTextBox
             // 
+            this.outputRichTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.outputRichTextBox.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.outputRichTextBox.Location = new System.Drawing.Point(12, 204);
             this.outputRichTextBox.Name = "outputRichTextBox";
             this.outputRichTextBox.ReadOnly = true;
             this.outputRichTextBox.Size = new System.Drawing.Size(460, 220);
             this.outputRichTextBox.TabIndex = 4;
             this.outputRichTextBox.Text = "";
-            this.outputRichTextBox.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // statusStrip
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel,
+            this.copyrightStatusLabel,
             this.progressBar});
             this.statusStrip.Location = new System.Drawing.Point(0, 435);
             this.statusStrip.Name = "statusStrip";
@@ -186,19 +186,29 @@ namespace LogoffUsersTool.UI
             this.statusLabel.Size = new System.Drawing.Size(42, 17);
             this.statusLabel.Text = "Готово";
             // 
+            // copyrightStatusLabel
+            // 
+            this.copyrightStatusLabel.Name = "copyrightStatusLabel";
+            this.copyrightStatusLabel.Size = new System.Drawing.Size(325, 17);
+            this.copyrightStatusLabel.Spring = true;
+            this.copyrightStatusLabel.Text = "developed by Dmitry Nikulshin";
+            this.copyrightStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // progressBar
             // 
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(100, 16);
             // 
-            // copyrightLabel
+            // settingsButton
             // 
-            this.copyrightLabel.AutoSize = true;
-            this.copyrightLabel.Location = new System.Drawing.Point(12, 430);
-            this.copyrightLabel.Name = "copyrightLabel";
-            this.copyrightLabel.Size = new System.Drawing.Size(150, 15);
-            this.copyrightLabel.TabIndex = 8;
-            this.copyrightLabel.Text = "developed by Dmitry Nikulshin";
+            this.settingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.settingsButton.Location = new System.Drawing.Point(266, 168);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(100, 30);
+            this.settingsButton.TabIndex = 7;
+            this.settingsButton.Text = "Настройки";
+            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // MainForm
             // 
@@ -212,7 +222,7 @@ namespace LogoffUsersTool.UI
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.inputGroupBox);
-            this.Controls.Add(this.copyrightLabel);
+            this.MinimumSize = new System.Drawing.Size(500, 500);
             this.Name = "MainForm";
             this.Text = "Logoff Users Tool";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
@@ -242,6 +252,6 @@ namespace LogoffUsersTool.UI
         private System.Windows.Forms.ToolStripProgressBar progressBar;
         private System.Windows.Forms.Button defaultSettingsButton;
         private System.Windows.Forms.Button settingsButton;
-        private System.Windows.Forms.Label copyrightLabel;
+        private System.Windows.Forms.ToolStripStatusLabel copyrightStatusLabel;
     }
 }

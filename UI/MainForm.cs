@@ -53,6 +53,8 @@ namespace LogoffUsersTool.UI
 
             startButton.Enabled = false;
             stopButton.Enabled = true;
+            statusLabel.Text = "Выполняется...";
+            progressBar.Value = 0;
 
             var server = serverTextBox.Text;
             var timer = (int)timerNumericUpDown.Value;
@@ -77,6 +79,8 @@ namespace LogoffUsersTool.UI
             {
                 startButton.Enabled = true;
                 stopButton.Enabled = false;
+                statusLabel.Text = "Готово";
+                progressBar.Value = 0;
             }
         }
 
