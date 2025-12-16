@@ -13,7 +13,7 @@ public class SettingsService
     public SettingsService()
     {
         var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-        _settingsFilePath = Path.Combine(documentsPath, "setting-tool.json");
+        _settingsFilePath = Path.Combine(documentsPath, "settings-tool.json");
     }
 
     public FullAppSettings LoadSettings()
