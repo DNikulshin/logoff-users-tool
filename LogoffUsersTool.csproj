@@ -3,9 +3,10 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <UseWindowsForms>true</UseWindowsForms>
-    <ApplicationIcon>image.png</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
     <Version>1.1.0</Version>
     <Authors>Dmitry Nikulshin</Authors>
     <Copyright>Copyright © 2023 Dmitry Nikulshin</Copyright>
@@ -14,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="image.png">
+    <Content Include="icon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

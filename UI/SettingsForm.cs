@@ -1,3 +1,5 @@
+using System;
+using System.Windows.Forms;
 using LogoffUsersTool.Models;
 using LogoffUsersTool.Services;
 

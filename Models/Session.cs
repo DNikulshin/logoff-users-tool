@@ -1,3 +1,4 @@
+#nullable enable
 
 namespace LogoffUsersTool.Models;
 
