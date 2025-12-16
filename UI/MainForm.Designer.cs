@@ -1,3 +1,5 @@
+using LogoffUsersTool.UI.Controls;
+
 namespace LogoffUsersTool.UI
 {
     partial class MainForm
@@ -31,13 +33,16 @@ namespace LogoffUsersTool.UI
             this.outputRichTextBox = new System.Windows.Forms.RichTextBox();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.spacerStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.progressBar = new TextProgressBar();
+            this.copyrightStatusStrip = new System.Windows.Forms.StatusStrip();
             this.copyrightStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.settingsButton = new System.Windows.Forms.Button();
             this.inputGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.timerNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intervalNumericUpDown)).BeginInit();
             this.statusStrip.SuspendLayout();
+            this.copyrightStatusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // inputGroupBox
@@ -186,7 +191,7 @@ namespace LogoffUsersTool.UI
             this.outputRichTextBox.Location = new System.Drawing.Point(12, 234);
             this.outputRichTextBox.Name = "outputRichTextBox";
             this.outputRichTextBox.ReadOnly = true;
-            this.outputRichTextBox.Size = new System.Drawing.Size(460, 190);
+            this.outputRichTextBox.Size = new System.Drawing.Size(460, 168);
             this.outputRichTextBox.TabIndex = 4;
             this.outputRichTextBox.Text = "";
             // 
@@ -194,32 +199,49 @@ namespace LogoffUsersTool.UI
             // 
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel,
-            this.copyrightStatusLabel,
-            this.progressBar});
-            this.statusStrip.Location = new System.Drawing.Point(0, 435);
+            this.spacerStatusLabel,
+            new System.Windows.Forms.ToolStripControlHost(this.progressBar) { Name = "progressBarHost" } });
+            this.statusStrip.Location = new System.Drawing.Point(0, 414);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(484, 22);
+            this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 14, 5);
+            this.statusStrip.Size = new System.Drawing.Size(484, 25);
+            this.statusStrip.SizingGrip = false;
             this.statusStrip.TabIndex = 5;
-            this.statusStrip.Text = "statusStrip1";
             // 
             // statusLabel
             // 
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(42, 17);
+            this.statusLabel.Size = new System.Drawing.Size(42, 20);
             this.statusLabel.Text = "Готово";
             // 
-            // copyrightStatusLabel
+            // spacerStatusLabel
             // 
-            this.copyrightStatusLabel.Name = "copyrightStatusLabel";
-            this.copyrightStatusLabel.Size = new System.Drawing.Size(325, 17);
-            this.copyrightStatusLabel.Spring = true;
-            this.copyrightStatusLabel.Text = "developed by Dmitry Nikulshin";
-            this.copyrightStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.spacerStatusLabel.Name = "spacerStatusLabel";
+            this.spacerStatusLabel.Size = new System.Drawing.Size(187, 20);
+            this.spacerStatusLabel.Spring = true;
             // 
             // progressBar
             // 
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(100, 16);
+            this.progressBar.Size = new System.Drawing.Size(220, 19);
+            // 
+            // copyrightStatusStrip
+            // 
+            this.copyrightStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyrightStatusLabel});
+            this.copyrightStatusStrip.Location = new System.Drawing.Point(0, 439);
+            this.copyrightStatusStrip.Name = "copyrightStatusStrip";
+            this.copyrightStatusStrip.Size = new System.Drawing.Size(484, 22);
+            this.copyrightStatusStrip.SizingGrip = false;
+            this.copyrightStatusStrip.TabIndex = 6;
+            // 
+            // copyrightStatusLabel
+            // 
+            this.copyrightStatusLabel.Name = "copyrightStatusLabel";
+            this.copyrightStatusLabel.Size = new System.Drawing.Size(469, 17);
+            this.copyrightStatusLabel.Spring = true;
+            this.copyrightStatusLabel.Text = "developed by Dmitry Nikulshin";
+            this.copyrightStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // settingsButton
             // 
@@ -236,8 +258,9 @@ namespace LogoffUsersTool.UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 457);
+            this.ClientSize = new System.Drawing.Size(484, 461);
             this.Controls.Add(this.statusStrip);
+            this.Controls.Add(this.copyrightStatusStrip);
             this.Controls.Add(this.outputRichTextBox);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.settingsButton);
@@ -254,8 +277,11 @@ namespace LogoffUsersTool.UI
             ((System.ComponentModel.ISupportInitialize)(this.intervalNumericUpDown)).EndInit();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            this.copyrightStatusStrip.ResumeLayout(false);
+            this.copyrightStatusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private System.Windows.Forms.GroupBox inputGroupBox;
@@ -273,9 +299,11 @@ namespace LogoffUsersTool.UI
         private System.Windows.Forms.RichTextBox outputRichTextBox;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripStatusLabel statusLabel;
-        private System.Windows.Forms.ToolStripProgressBar progressBar;
+        private System.Windows.Forms.ToolStripStatusLabel spacerStatusLabel;
+        private TextProgressBar progressBar;
         private System.Windows.Forms.Button defaultSettingsButton;
         private System.Windows.Forms.Button settingsButton;
+        private System.Windows.Forms.StatusStrip copyrightStatusStrip;
         private System.Windows.Forms.ToolStripStatusLabel copyrightStatusLabel;
     }
 }

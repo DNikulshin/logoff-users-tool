@@ -1,5 +1,6 @@
 
 using System;
+using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -33,6 +34,19 @@ namespace LogoffUsersTool.UI
             timerNumericUpDown.Value = lastUsed.TimerSeconds;
             intervalNumericUpDown.Value = lastUsed.NotificationInterval;
             messageTextBox.Text = lastUsed.Message;
+
+            var appSettings = _fullAppSettings.Application;
+
+            if (Screen.AllScreens.Any(s => s.WorkingArea.Contains(new Point(appSettings.X, appSettings.Y))))
+            {
+                this.Location = new Point(appSettings.X, appSettings.Y);
+            }
+            
+            if (appSettings.Width >= this.MinimumSize.Width && appSettings.Height >= this.MinimumSize.Height)
+            {
+                this.Width = appSettings.Width;
+                this.Height = appSettings.Height;
+            }
         }
 
         private void SaveSettings()
@@ -42,6 +56,24 @@ namespace LogoffUsersTool.UI
             lastUsed.TimerSeconds = (int)timerNumericUpDown.Value;
             lastUsed.NotificationInterval = (int)intervalNumericUpDown.Value;
             lastUsed.Message = messageTextBox.Text;
+
+            var appSettings = _fullAppSettings.Application;
+            if (WindowState == FormWindowState.Normal)
+            {
+                appSettings.Width = this.Width;
+                appSettings.Height = this.Height;
+                appSettings.X = this.Location.X;
+                appSettings.Y = this.Location.Y;
+            }
+            else
+            {
+                appSettings.Width = this.RestoreBounds.Width;
+                appSettings.Height = this.RestoreBounds.Height;
+                appSettings.X = this.RestoreBounds.X;
+                appSettings.Y = this.RestoreBounds.Y;
+            }
+            appSettings.LastRun = DateTime.Now;
+
             _settingsService.SaveSettings(_fullAppSettings);
         }
 
@@ -148,15 +180,20 @@ namespace LogoffUsersTool.UI
                 var percentComplete = 100 - (int)Math.Round((double)remaining / timer * 100);
                 var statusText = $"Осталось: {remaining} секунд (примерно {(int)Math.Ceiling(remaining / 60.0)} мин.)";
 
-                progressBar.Value = percentComplete;
-                statusLabel.Text = statusText;
+                this.Invoke((MethodInvoker)delegate {
+                    progressBar.Value = percentComplete;
+                    //statusLabel.Text = statusText;
+                });
 
                 await Task.Delay(1000, cancellationToken);
                 remaining--;
             }
 
-            progressBar.Value = 100;
-            statusLabel.Text = "Завершение сеансов";
+            this.Invoke((MethodInvoker)delegate {
+                progressBar.Value = 100;
+                statusLabel.Text = "Завершение сеансов";
+            });
+
             progress.Report("\nВремя истекло! Завершаю сеансы...");
 
             var finalSessions = _sessionService.GetActiveSessions(server);
@@ -169,7 +206,7 @@ namespace LogoffUsersTool.UI
                 }
             }
             else
-            {
+            { 
                 progress.Report("Нет активных сессий для завершения.");
             }
 
@@ -182,12 +219,18 @@ namespace LogoffUsersTool.UI
             {
                 if (settingsForm.ShowDialog() == DialogResult.OK)
                 {
-                    LoadSettings();
+                    _fullAppSettings = _settingsService.LoadSettings();
+                    ApplyDefaultSettings();
                 }
             }
         }
         
         private void defaultSettingsButton_Click(object sender, EventArgs e)
+        {
+            ApplyDefaultSettings();
+        }
+
+        private void ApplyDefaultSettings()
         {
             var defaultSettings = _fullAppSettings.DefaultSettings;
             serverTextBox.Text = defaultSettings.Server;

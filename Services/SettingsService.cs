@@ -1,3 +1,4 @@
+
 using System;
 using System.IO;
 using System.Text.Json;
@@ -9,16 +10,10 @@ public class SettingsService
 {
     private readonly string _settingsFilePath;
 
-    // Конструктор для использования в приложении
     public SettingsService()
     {
-        _settingsFilePath = Path.Combine(AppContext.BaseDirectory, "settings.json");
-    }
-
-    // Конструктор для тестов
-    public SettingsService(string settingsFilePath)
-    {
-        _settingsFilePath = settingsFilePath;
+        var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+        _settingsFilePath = Path.Combine(documentsPath, "setting-tool.json");
     }
 
     public FullAppSettings LoadSettings()
@@ -35,7 +30,6 @@ public class SettingsService
         }
         catch (Exception)
         {
-            // В случае ошибки чтения или десериализации, возвращаем настройки по умолчанию
             return new FullAppSettings();
         }
     }
