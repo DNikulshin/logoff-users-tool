@@ -3,15 +3,20 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <EnableWindowsTargeting>true</EnableWindowsTargeting>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.0</FileVersion>
     <UseWindowsForms>true</UseWindowsForms>
-    <PublishSingleFile>true</PublishSingleFile>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <ApplicationIcon>image.png</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Version>1.1.0</Version>
+    <Authors>Dmitry Nikulshin</Authors>
+    <Copyright>Copyright © 2023 Dmitry Nikulshin</Copyright>
+    <PackageProjectUrl>https://github.com/DmitryNikulshin/LogoffUsersTool</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/DmitryNikulshin/LogoffUsersTool</RepositoryUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="image.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
 </Project>
