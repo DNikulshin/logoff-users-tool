@@ -2,7 +2,7 @@
 
 Утилита для принудительного завершения сеансов пользователей на удаленном сервере Windows с предварительным уведомлением.
 
-![Скриншот приложения](https://i.ibb.co/6y1v1S8/screenshot.png)
+![Скриншот приложения](https://drive.google.com/file/d/1Xo65sAOD827V6S9ggldtQp0VVfqgRBb7/view?usp=sharing)
 
 ## Описание
 
