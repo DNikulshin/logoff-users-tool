@@ -23,6 +23,8 @@ namespace LogoffUsersTool.UI
             this.timerNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.intervalLabel = new System.Windows.Forms.Label();
             this.intervalNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.messageLabel = new System.Windows.Forms.Label();
+            this.messageTextBox = new System.Windows.Forms.TextBox();
             this.startButton = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
             this.clearButton = new System.Windows.Forms.Button();
@@ -49,9 +51,11 @@ namespace LogoffUsersTool.UI
             this.inputGroupBox.Controls.Add(this.timerNumericUpDown);
             this.inputGroupBox.Controls.Add(this.intervalLabel);
             this.inputGroupBox.Controls.Add(this.intervalNumericUpDown);
+            this.inputGroupBox.Controls.Add(this.messageLabel);
+            this.inputGroupBox.Controls.Add(this.messageTextBox);
             this.inputGroupBox.Location = new System.Drawing.Point(12, 12);
             this.inputGroupBox.Name = "inputGroupBox";
-            this.inputGroupBox.Size = new System.Drawing.Size(460, 150);
+            this.inputGroupBox.Size = new System.Drawing.Size(460, 180);
             this.inputGroupBox.TabIndex = 0;
             this.inputGroupBox.TabStop = false;
             this.inputGroupBox.Text = "Параметры";
@@ -59,7 +63,7 @@ namespace LogoffUsersTool.UI
             // defaultSettingsButton
             // 
             this.defaultSettingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.defaultSettingsButton.Location = new System.Drawing.Point(284, 112);
+            this.defaultSettingsButton.Location = new System.Drawing.Point(284, 142);
             this.defaultSettingsButton.Name = "defaultSettingsButton";
             this.defaultSettingsButton.Size = new System.Drawing.Size(170, 30);
             this.defaultSettingsButton.TabIndex = 6;
@@ -123,9 +127,27 @@ namespace LogoffUsersTool.UI
             this.intervalNumericUpDown.TabIndex = 5;
             this.intervalNumericUpDown.Value = new decimal(new int[] { 60, 0, 0, 0 });
             // 
+            // messageLabel
+            // 
+            this.messageLabel.AutoSize = true;
+            this.messageLabel.Location = new System.Drawing.Point(6, 115);
+            this.messageLabel.Name = "messageLabel";
+            this.messageLabel.Size = new System.Drawing.Size(76, 15);
+            this.messageLabel.TabIndex = 7;
+            this.messageLabel.Text = "Сообщение:";
+            // 
+            // messageTextBox
+            // 
+            this.messageTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.messageTextBox.Location = new System.Drawing.Point(180, 112);
+            this.messageTextBox.Name = "messageTextBox";
+            this.messageTextBox.Size = new System.Drawing.Size(274, 23);
+            this.messageTextBox.TabIndex = 8;
+            // 
             // startButton
             // 
-            this.startButton.Location = new System.Drawing.Point(12, 168);
+            this.startButton.Location = new System.Drawing.Point(12, 198);
             this.startButton.Name = "startButton";
             this.startButton.Size = new System.Drawing.Size(100, 30);
             this.startButton.TabIndex = 1;
@@ -136,7 +158,7 @@ namespace LogoffUsersTool.UI
             // stopButton
             // 
             this.stopButton.Enabled = false;
-            this.stopButton.Location = new System.Drawing.Point(118, 168);
+            this.stopButton.Location = new System.Drawing.Point(118, 198);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(100, 30);
             this.stopButton.TabIndex = 2;
@@ -147,7 +169,7 @@ namespace LogoffUsersTool.UI
             // clearButton
             // 
             this.clearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.clearButton.Location = new System.Drawing.Point(372, 168);
+            this.clearButton.Location = new System.Drawing.Point(372, 198);
             this.clearButton.Name = "clearButton";
             this.clearButton.Size = new System.Drawing.Size(100, 30);
             this.clearButton.TabIndex = 3;
@@ -161,10 +183,10 @@ namespace LogoffUsersTool.UI
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.outputRichTextBox.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.outputRichTextBox.Location = new System.Drawing.Point(12, 204);
+            this.outputRichTextBox.Location = new System.Drawing.Point(12, 234);
             this.outputRichTextBox.Name = "outputRichTextBox";
             this.outputRichTextBox.ReadOnly = true;
-            this.outputRichTextBox.Size = new System.Drawing.Size(460, 220);
+            this.outputRichTextBox.Size = new System.Drawing.Size(460, 190);
             this.outputRichTextBox.TabIndex = 4;
             this.outputRichTextBox.Text = "";
             // 
@@ -202,7 +224,7 @@ namespace LogoffUsersTool.UI
             // settingsButton
             // 
             this.settingsButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.settingsButton.Location = new System.Drawing.Point(266, 168);
+            this.settingsButton.Location = new System.Drawing.Point(266, 198);
             this.settingsButton.Name = "settingsButton";
             this.settingsButton.Size = new System.Drawing.Size(100, 30);
             this.settingsButton.TabIndex = 7;
@@ -243,6 +265,8 @@ namespace LogoffUsersTool.UI
         private System.Windows.Forms.NumericUpDown timerNumericUpDown;
         private System.Windows.Forms.Label intervalLabel;
         private System.Windows.Forms.NumericUpDown intervalNumericUpDown;
+        private System.Windows.Forms.Label messageLabel;
+        private System.Windows.Forms.TextBox messageTextBox;
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Button stopButton;
         private System.Windows.Forms.Button clearButton;

@@ -89,7 +89,7 @@ namespace LogoffUsersTool.Services
             try
             {
                 int response;
-                NativeMethods.WTSSendMessage(serverHandle, sessionId, "ВНИМАНИЕ!", 18, message, message.Length * 2, 0x40, timeout, out response, true);
+                NativeMethods.WTSSendMessage(serverHandle, sessionId, "", 0, message, message.Length * 2, 0x40, timeout, out response, true);
             }
             finally
             {

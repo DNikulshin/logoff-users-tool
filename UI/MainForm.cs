@@ -32,6 +32,7 @@ namespace LogoffUsersTool.UI
             serverTextBox.Text = lastUsed.Server;
             timerNumericUpDown.Value = lastUsed.TimerSeconds;
             intervalNumericUpDown.Value = lastUsed.NotificationInterval;
+            messageTextBox.Text = lastUsed.Message;
         }
 
         private void SaveSettings()
@@ -40,6 +41,7 @@ namespace LogoffUsersTool.UI
             lastUsed.Server = serverTextBox.Text;
             lastUsed.TimerSeconds = (int)timerNumericUpDown.Value;
             lastUsed.NotificationInterval = (int)intervalNumericUpDown.Value;
+            lastUsed.Message = messageTextBox.Text;
             _settingsService.SaveSettings(_fullAppSettings);
         }
 
@@ -59,13 +61,14 @@ namespace LogoffUsersTool.UI
             var server = serverTextBox.Text;
             var timer = (int)timerNumericUpDown.Value;
             var interval = (int)intervalNumericUpDown.Value;
+            var message = messageTextBox.Text;
 
             _cancellationTokenSource = new CancellationTokenSource();
             var progress = new Progress<string>(update => outputRichTextBox.AppendText(update + "\n"));
 
             try
             {
-                await HandleSessionResetAsync(server, timer, interval, progress, _cancellationTokenSource.Token);
+                await HandleSessionResetAsync(server, timer, interval, message, progress, _cancellationTokenSource.Token);
             }
             catch (OperationCanceledException)
             {
@@ -99,7 +102,7 @@ namespace LogoffUsersTool.UI
             SaveSettings();
         }
 
-        private async Task HandleSessionResetAsync(string server, int timer, int interval, IProgress<string> progress, CancellationToken cancellationToken)
+        private async Task HandleSessionResetAsync(string server, int timer, int interval, string message, IProgress<string> progress, CancellationToken cancellationToken)
         {
             progress.Report("Скрипт принудительного завершения сеансов");
             progress.Report($"Сервер: {server}");
@@ -131,12 +134,12 @@ namespace LogoffUsersTool.UI
                     if (currentSessions.Any())
                     {
                         var minutes = (int)Math.Ceiling(remaining / 60.0);
-                        var message = $"Все сеансы будут завершены через {minutes} мин. Сохраните работу!";
+                        var formattedMessage = $"{message} (Осталось: {minutes} мин.)";
 
                         foreach (var session in currentSessions)
                         {
                             var sessionCopy = session;
-                            _ = Task.Run(() => _sessionService.SendMessage(server, sessionCopy.Id, message, interval), cancellationToken);
+                            _ = Task.Run(() => _sessionService.SendMessage(server, sessionCopy.Id, formattedMessage, interval), cancellationToken);
                         }
                         progress.Report($"[{DateTime.Now:HH:mm:ss}] Оповещение отправлено {currentSessions.Count} сессиям. Осталось: {remaining} секунд ({minutes} мин.)");
                     }
@@ -190,6 +193,7 @@ namespace LogoffUsersTool.UI
             serverTextBox.Text = defaultSettings.Server;
             timerNumericUpDown.Value = defaultSettings.TimerSeconds;
             intervalNumericUpDown.Value = defaultSettings.NotificationInterval;
+            messageTextBox.Text = defaultSettings.Message;
         }
     }
 }
